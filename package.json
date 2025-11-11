@@ -1,0 +1,40 @@
+{
+  "name": "deh_apis",
+  "version": "1.0.0",
+  "description": "RESTful APIs for DEH",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "mocha \"tests/**/*.js\" || echo \"[warn] tests not configured or failing\"",
+    "lint": "echo \"[info] ESLint not configured yet\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.1",
+    "check-types": "^7.0.0",
+    "express": "^4.13.4",
+    "formidable": "^3.5.2",
+    "geolib": "^2.0.21",
+    "httpolyglot": "^0.1.2",
+    "jsftp": "^1.5.3",
+    "mime": "^1.3.4",
+    "moment": "^2.14.1",
+    "mongoose": "^4.4.19",
+    "multer": "^1.2.0",
+    "oauth2-server": "^2.4.1",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-http-header-token": "^1.1.0",
+    "request": "^2.72.0",
+    "shortid": "^2.2.6",
+    "virtual-host": "0.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.7.3",
+    "supertest": "^6.3.4"
+  }
+}

@@ -1,0 +1,39 @@
+# Node modules & logs
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Git and CI files
+.git
+.gitignore
+.github
+
+# Test files and coverage reports
+tests
+coverage
+*.test.js
+
+# Local environment & credentials
+.env
+*.pem
+*.key
+*.crt
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build artifacts or temp dirs
+tmp
+uploads
+*.swp
+*.swo
+
+# IDE / editor folders
+.vscode
+.idea
+
+# Python or PHP files (you had some in models)
+*.py
+*.php

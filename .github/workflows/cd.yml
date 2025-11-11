@@ -49,3 +49,31 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+      - name: Build and push Docker image
+        id: build
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Inspect image size
+        run: |
+          echo "🔍 Inspecting image size..."
+          docker pull ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+          docker image inspect ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest --format='📦 Image Size: {{ .Size | printf "%.2f" | div 1000000 }} MB'
+
+      - name: Build summary
+        run: |
+          echo "--------------------------------------"
+          echo "✅ Build Summary"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Image Tags:"
+          echo " - ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest"
+          echo " - ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+          echo "--------------------------------------"
+          echo "🎉 Build and Push Successful!"

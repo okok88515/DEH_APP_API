@@ -63,7 +63,9 @@ jobs:
         run: |
           echo "🔍 Inspecting image size..."
           docker pull ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
-          docker image inspect ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest --format='📦 Image Size: {{ .Size | printf "%.2f" | div 1000000 }} MB'
+          SIZE=$(docker image inspect ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest --format='{{ .Size }}')
+          SIZE_MB=$(echo "scale=2; $SIZE/1000000" | bc)
+          echo "📦 Image Size: ${SIZE_MB} MB"
 
       - name: Build summary
         run: |
